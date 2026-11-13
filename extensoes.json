@@ -1,9 +1,45 @@
 {
-  "atualizado": "2026-11-12",
+  "atualizado": "2026-11-13",
   "extensoes": [
-    {"id": "assistente-projudi", "nome": "Assistente PROJUDI", "versao": "2.3.2", "data": "2026-11-12", "arquivo": "assistente-projudi-2.3.2.zip", "descricao": "Extensão do cartório no PROJUDI/TJPR: juntadas, prazos, mandados, ofícios, conclusões, SISBAJUD, RENAJUD, CNIB e PDFs."},
-    {"id": "projudi-renajud", "nome": "PROJUDI → RENAJUD", "versao": "1.2.3", "data": "2026-11-12", "arquivo": "projudi-renajud-1.2.3.zip", "descricao": "Captura o processo no PROJUDI, pesquisa o CPF/CNPJ do executado no RENAJUD e preenche a inserção de restrição (Comarca, Órgão, Juiz e Nº do processo). Nunca insere a restrição."},
-    {"id": "consultar-sisbajud", "nome": "CONSULTAR SISBAJUD", "versao": "1.2.1", "data": "2026-11-12", "arquivo": "consultar-sisbajud-1.2.1.zip", "descricao": "Consulta as ordens do mês (Vara/Juízo 8867 e Assessor) e, uma a uma, abre a ordem, visualiza a série, exporta e imprime em PDF."},
-    {"id": "projudi-infojud", "nome": "PROJUDI → INFOJUD", "versao": "1.0.0", "data": "2026-11-12", "arquivo": "projudi-infojud-1.0.0.zip", "descricao": "Captura o processo e os executados no PROJUDI e preenche a solicitação no INFOJUD (e-CAC). Nunca clica em Enviar."}
+    {
+      "id": "assistente-projudi",
+      "nome": "Assistente PROJUDI",
+      "versao": "2.3.2",
+      "data": "2026-11-12",
+      "arquivo": "assistente-projudi-2.3.2.zip",
+      "descricao": "Extensão do cartório no PROJUDI/TJPR: juntadas, prazos, mandados, ofícios, conclusões, SISBAJUD, RENAJUD, CNIB e PDFs."
+    },
+    {
+      "id": "projudi-renajud",
+      "nome": "PROJUDI → RENAJUD",
+      "versao": "1.2.3",
+      "data": "2026-11-12",
+      "arquivo": "projudi-renajud-1.2.3.zip",
+      "descricao": "Captura o processo no PROJUDI, pesquisa o CPF/CNPJ do executado no RENAJUD e preenche a inserção de restrição (Comarca, Órgão, Juiz e Nº do processo). Nunca insere a restrição."
+    },
+    {
+      "id": "consultar-sisbajud",
+      "nome": "CONSULTAR SISBAJUD",
+      "versao": "1.2.1",
+      "data": "2026-11-12",
+      "arquivo": "consultar-sisbajud-1.2.1.zip",
+      "descricao": "Consulta as ordens do mês (Vara/Juízo 8867 e Assessor) e, uma a uma, abre a ordem, visualiza a série, exporta e imprime em PDF."
+    },
+    {
+      "id": "projudi-infojud",
+      "nome": "PROJUDI → INFOJUD",
+      "versao": "1.0.0",
+      "data": "2026-11-12",
+      "arquivo": "projudi-infojud-1.0.0.zip",
+      "descricao": "Captura o processo e os executados no PROJUDI e preenche a solicitação no INFOJUD (e-CAC). Nunca clica em Enviar."
+    },
+    {
+      "id": "requisitorio-sgp",
+      "nome": "Requisitório SGP",
+      "versao": "2.4.1",
+      "data": "2026-11-13",
+      "arquivo": "requisitorio-sgp.zip",
+      "descricao": "Cadastra o requisitório no SGP (Sistema de Gestão de Precatórios) com os dados do cumprimento de sentença do PROJUDI. Nunca clica em Gerar precatório."
+    }
   ]
 }
