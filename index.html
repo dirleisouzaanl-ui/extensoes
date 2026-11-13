@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Extensões do Cartório</title>
+<style>
+  :root{--bg:#f6f7f9;--card:#fff;--txt:#1d2430;--mut:#5d6675;--borda:#dde1e7;--pri:#1f5c40;--pri2:#174731;--aviso:#a86400}
+  @media (prefers-color-scheme:dark){:root{--bg:#14171c;--card:#1d2128;--txt:#e7eaef;--mut:#9aa3b2;--borda:#2e343d;--pri:#3f9a6f;--pri2:#2f7a57;--aviso:#e0a14a}}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+  main{max-width:860px;margin:0 auto;padding:28px 16px 48px}
+  h1{font-size:24px;margin:0 0 4px}
+  .sub{color:var(--mut);margin:0 0 24px}
+  .lista{display:grid;gap:14px}
+  .card{background:var(--card);border:1px solid var(--borda);border-radius:10px;padding:16px 18px;display:flex;gap:16px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
+  .card h2{font-size:17px;margin:0 0 2px}
+  .meta{color:var(--mut);font-size:13px;margin-bottom:6px}
+  .desc{margin:0;max-width:560px}
+  .novo{display:inline-block;margin-left:8px;padding:1px 8px;border-radius:999px;font-size:12px;font-weight:600;color:#fff;background:var(--aviso);vertical-align:2px}
+  a.btn{display:inline-block;background:var(--pri);color:#fff;text-decoration:none;font-weight:600;padding:9px 16px;border-radius:7px;white-space:nowrap}
+  a.btn:hover{background:var(--pri2)}
+  details{margin-top:28px;background:var(--card);border:1px solid var(--borda);border-radius:10px;padding:14px 18px}
+  summary{font-weight:600;cursor:pointer}
+  ol{margin:10px 0 0;padding-left:20px}
+  code{background:var(--bg);border:1px solid var(--borda);border-radius:4px;padding:0 4px}
+  .erro{color:#c0392b}
+</style>
+</head>
+<body>
+<main>
+  <h1>Extensões do Cartório</h1>
+  <p class="sub" id="sub">Carregando…</p>
+  <div class="lista" id="lista"></div>
+
+  <details open>
+    <summary>Como instalar ou atualizar (Chrome)</summary>
+    <ol>
+      <li>Clique em <b>Baixar</b> e extraia o .zip (botão direito → Extrair tudo) numa pasta fixa, por exemplo <code>E:\EXTENSOES</code>.</li>
+      <li>Abra <code>chrome://extensions</code> e ative o <b>Modo do desenvolvedor</b>.</li>
+      <li>Ao atualizar, <b>remova</b> a versão anterior da mesma extensão.</li>
+      <li>Clique em <b>Carregar sem compactação</b> e escolha a pasta extraída (a que contém o <code>manifest.json</code>).</li>
+      <li>Não apague nem mova a pasta depois: o Chrome carrega a extensão a partir dela.</li>
+    </ol>
+  </details>
+</main>
+<script>
+(function () {
+  const lista = document.getElementById('lista');
+  const sub = document.getElementById('sub');
+  const ler = (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } };
+  const gravar = (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} };
+  const maior = (a, b) => { // a > b ?
+    const x = String(a).split('.').map(Number), y = String(b).split('.').map(Number);
+    for (let i = 0; i < Math.max(x.length, y.length); i++) { if ((x[i] || 0) !== (y[i] || 0)) return (x[i] || 0) > (y[i] || 0); }
+    return false;
+  };
+  const dataBr = (s) => s ? s.split('-').reverse().join('/') : '';
+  const el = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
+
+  fetch('extensoes.json?' + Date.now()).then((r) => r.json()).then((j) => {
+    sub.textContent = 'Atualizado em ' + dataBr(j.atualizado) + ' · ' + j.extensoes.length + ' extensões';
+    j.extensoes.forEach((x) => {
+      const card = el('div', 'card');
+      const info = el('div');
+      const h = el('h2', null, x.nome);
+      const baixada = ler('ext-' + x.id);
+      if (baixada && maior(x.versao, baixada)) h.appendChild(el('span', 'novo', 'atualização disponível'));
+      info.appendChild(h);
+      info.appendChild(el('div', 'meta', 'Versão ' + x.versao + ' · ' + dataBr(x.data) + (baixada ? ' · você baixou a ' + baixada : '')));
+      info.appendChild(el('p', 'desc', x.descricao));
+      const a = el('a', 'btn', 'Baixar');
+      a.href = x.arquivo;
+      a.setAttribute('download', '');
+      a.addEventListener('click', () => { gravar('ext-' + x.id, x.versao); const n = h.querySelector('.novo'); if (n) n.remove(); });
+      card.appendChild(info);
+      card.appendChild(a);
+      lista.appendChild(card);
+    });
+  }).catch(() => { sub.innerHTML = '<span class="erro">Não foi possível ler o extensoes.json.</span>'; });
+})();
+</script>
+</body>
+</html>
