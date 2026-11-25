@@ -44,9 +44,9 @@
     {
       "id": "projudi-email",
       "nome": "PROJUDI → E-mail",
-      "versao": "1.0.1",
+      "versao": "1.0.2",
       "data": "2026-11-25",
-      "arquivo": "projudi-email-1.0.1.zip",
+      "arquivo": "projudi-email-1.0.2.zip",
       "descricao": "Envia por e-mail, dos autos do PROJUDI, os PDFs das movimentações (ofício, mandado, carta, decisão) com modelos de mensagem, pela sua conta Google (Apps Script), e gera a certidão de envio. Pede confirmação antes de enviar."
     }
   ]
