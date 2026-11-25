@@ -1,5 +1,5 @@
 {
-  "atualizado": "2026-11-13",
+  "atualizado": "2026-11-25",
   "extensoes": [
     {
       "id": "assistente-projudi",
@@ -40,6 +40,14 @@
       "data": "2026-11-13",
       "arquivo": "requisitorio-sgp.zip",
       "descricao": "Cadastra o requisitório no SGP (Sistema de Gestão de Precatórios) com os dados do cumprimento de sentença do PROJUDI. Nunca clica em Gerar precatório."
+    },
+    {
+      "id": "projudi-email",
+      "nome": "PROJUDI → E-mail",
+      "versao": "1.0.0",
+      "data": "2026-11-25",
+      "arquivo": "projudi-email-1.0.0.zip",
+      "descricao": "Envia por e-mail, dos autos do PROJUDI, os PDFs das movimentações (ofício, mandado, carta, decisão) com modelos de mensagem, pela sua conta Google (Apps Script), e gera a certidão de envio. Pede confirmação antes de enviar."
     }
   ]
 }
